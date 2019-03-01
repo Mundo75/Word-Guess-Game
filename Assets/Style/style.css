@@ -1,0 +1,137 @@
+body   {
+    margin: 0;
+    background-image: url(../Images/sky.jpg);
+    background-size: cover;
+    
+}
+
+.centerPanel {
+    margin: 0px 0px 0px 0px; 
+}
+
+.titleRow {
+    padding: 20px 0px 0px 0px;
+}
+
+#title {
+    width: 100%;
+    margin: 0px 0px 0px 0px;
+    padding: 150px 0px 0px 0px;
+}
+
+.btn {
+    margin: 20px 0px 0px 180px;
+    
+}
+.leftJets {
+    width: 100%;
+    margin-right: 0px;
+    padding: 20px 0px 0px 0px;
+}
+
+.rightJets {
+    margin: 0px 0px 0px 0px; 
+    padding: 20px 0px 0px 0px; 
+}
+
+.F-16 {
+    height: 200px;
+    width: 300px;
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 40px;
+    
+    
+    
+}
+
+.A-10 {
+    height: 200px;
+    width: 300px;
+    margin: 20px 0px 0px 0px;
+    padding: 0px 20px 0px 0px;
+    float: right;
+}
+
+.Mig28 {
+    height: 200px;
+    width: 300px;
+    margin: 20px 0px 0px 0px;
+    padding: 0px 0px 0px 40px;
+    
+    
+}
+
+.F-111 {
+    height: 200px;
+    width: 300px;
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 20px;
+    
+}
+
+.F-4 {
+    height: 200px;
+    width: 300px;
+    margin: 20px 0px 0px 0px;
+    padding: 0px 40px 0px 0px;
+    float: right;
+
+}
+
+.F-18 {
+    height: 200px;
+    width: 300px;
+    margin: 20px 0px 0px 0px;
+    padding: 0px 0px 0px 20px;
+}
+
+#hideF16 {
+    display: none;
+
+}
+
+#hideA10 {
+    display: none;
+
+}
+
+#hideMig28 {
+    display: none;
+
+}
+
+#hideF111 {
+    display: none;
+
+}
+
+#hideF4 {
+    display: none;
+
+}
+
+#hideF18 {
+    display: none;
+
+}
+
+.gameBoard {
+    background-color: #cccccc;
+    width: 100%;
+    height: 500px;
+}
+
+.flash {
+    animation: flash linear 1s infinite;
+}
+
+@keyframes flash {
+    0% {opacity: 1;}
+    50% {opacity: .1;}
+    100% {opacity: 1;}
+}
+
+.start {
+    padding: 20px 0px 0px 0px;
+    
+}
