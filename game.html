@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Word Fighter</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="Assets/Style/style.css">
+
+
+</head>
+<body>
+        
+  <div class="container-fluid">
+        <div class="row titleRow">
+            <div class="col-sm-4 leftJets">
+                <img src="Assets/Images/F-16.jpg" alt="F-15" class="F-16" id="hideF16">
+                <img src="Assets/Images/A-10.png" alt="A-10" class="A-10" id="hideA10">
+                <img src="Assets/Images/Mig 28.jpg" alt="Mig28" class="Mig28" id="hideMig28">
+            </div>
+                <div class="col-sm-4 gameBoard">
+                    <p class="text-danger text-center start flash"><strong>Press any key to begin!</strong></p>
+
+                    <div class="wins">
+                        <h3 class="text-center">Wins</h3>
+                    </div>
+                    <div class="current word">
+                        <h3 class="text-center">Here is your Bogie!</h3>
+                    </div>
+                    <div class="guessesLeft">
+                        <h3 class="text-center">Missles Remaining</h3>
+                    </div>
+                    <div class="lettersUsed">
+                        <h3 class="text-center">Targets Already Selected</h3>
+                    </div>
+            </div>
+                <div class="col-sm-4 rightJets">
+                    <img src="Assets/Images/F-111.jpg" alt="F-111" class="F-111" id="hideF111">
+                    <img src="Assets/Images/F-4.jpg" alt="F-4" class="F-4" id="hideF4">
+                    <img src="Assets/Images/F-18.jpg" alt="F-18" class="F-18" id="hideF18">
+                </div>
+        </div>
+  </div>
+</div>
+        
+<script src="../Word-Guess-Game/Assets/Javascript/game.js"></script>    
+</body>
+</html>
