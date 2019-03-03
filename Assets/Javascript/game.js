@@ -1,72 +1,112 @@
-  //word Array for random words to solve
-  var wordStore = ["falcon",
-                    "warthog", 
-                    "phantom", 
-                    "hornet",
-                    "aardvark",
-                        "bogus"];
+//grab DOM elements for use later -- using Id
 
+var winCounter = document.getElementById("winTally");
+var gameBoardSpaces = document.getElementById("emptyLetterSpaces");
+var gameBoardLetters = document.getElementById("");
+var guessCounter = document.getElementById("remaining-guesses");
+var wrongLetterCounter = document.getElementById("letters-fired");
+var launchMission = document.getElementById("launch");
+
+//word Array for random words to solve
+
+var wordStore = ["falcon",
+                "warthog", 
+                "phantom", 
+                "hornet",
+                "aardvark",
+                "bogus"];
+
+//Global variables
 var wins = 0;
-var misslesFired = 0;
-var misselsLeft = 0;
-var hiddenBogie = [];
+var misslesLeft = 7;
+var missionEngaged = false;
+var selectedTarget = " ";
+var hiddenTarget = [];
 var hits = [];
-var misses = [];
+var guessedLetters = [];
 
-var hiddenBogieDisplay = document.getElementById("gunSights");
-var missesDisplay = document.getElementById("firedMissles");
 
-//Comp selects word randomly from word store array
 
-var bogieSelect = Math.floor(Math.random()*wordStore.length);
-var targetBogie = wordStore[bogieSelect];
-console.log(targetBogie);
+//start game with have all counters reset and selecting new word (bogie) to solve (shoot down)
 
-//sets hidden word -- displaying "_ _ _" the same length of word chosen
+function startMission () {
 
-function hiddenWord () {
+    missionEngaged = true;
+    misslesLeft = 7;
+    hits = [];
+    misses = [];
+    hiddenTarget = [];
 
-    for (var i = 0; i < targetBogie.length; i++) {
-        
-        hiddenBogie.push("_");
-         
+    selectedTarget = wordStore[Math.floor(Math.random() * wordStore.length)];
+
+    for (var i = 0; i < selectedTarget.length; i++) {
+
+        hiddenTarget.push("_");
     }
-return hiddenBogie
+
+    guessCounter.textContent = misslesLeft;
+    gameBoardSpaces.textContent = hiddenTarget.join(" ");
+    wrongLetterCounter.textContent = guessedLetters;
 }
 
-console.log(hiddenWord());
+//check for correct guesses and display in the DOM in matching spaces "hiddenTarget"
 
-//capture the user guess using key event
+function typeGuess(letter) {
 
-document.addEventListener("keypress", (event) => {
+    console.log(letter);
 
-    var keyNumber = event.keyCode;
-    var keyLetter = String.fromCharCode(keyNumber);
+    if (missionEngaged === true && guessedLetters.indexOf(letter) === -1) {
 
-//match user key input to word selected from word store array.  If correct guess, push letter to "hits" array.
+        guessedLetters.push(letter);
 
-    if (targetBogie.indexOf(keyLetter) > -1) {
+        for (var i = 0; i < selectedTarget.length; i++) {
+
+            if (selectedTarget[i].toLowerCase() === letter.toLowerCase()) {
+
+                hiddenTarget[i] = selectedTarget[i];
+
+            } 
+        }
+
+        console.log(hiddenTarget)
+        gameBoardSpaces.textContent = hiddenTarget.join(" ");
+        incorrectGuess(letter);
+
+    } else {
+
+        if (!missionEngaged) {
+
+            alert("Game not running");
+            
+        } else {
+
+            alert("Miss-Fire!!  You already shot that missle....pick another.");
+        }
+}     
         
-        hits.push(keyLetter);
         
-        hiddenBogie[targetBogie.indexOf(keyLetter)] = keyLetter;
-        hiddenBogieDisplay.innerHTML = hiddenBogie.join(" ");
-        missesDisplay[0].innerHTML = misses;
-        console.log(hits);
-
-        } if (hiddenBogie.join("") == targetBogie) {
-
-        alert("Direct Hit....You Win!!");
-
-    } else 
-
-        misses.push(keyLetter);
-        missesDisplay[0].innerHTML = misses;
-        console.log(misses);
-
-    
     
 
-});
 
-    //hiddenBogieDisplay[0].innerHTML = hiddenWord().join(" ");
+
+//check for incorrect guesses and display in DOM in Targets Already Selected div "misses"
+
+function incorrectGuess (letter) {
+
+    if (hiddenTarget.indexOf(letter) === -1) {
+
+        misslesLeft--;
+        misses.push(letter);
+        wrongLetterCounter.textContent = misses.join(" ");
+        guessCounter.textContent = misslesLeft;
+    }
+}
+
+launchMission.addEventListener("click", startMission);
+
+document.onkeyup = function(event) {
+    console.dir(event);
+    if (event.keyCode >= 65 && event.keyCode <= 90) {
+        typeGuess(event.key);
+    }
+}
