@@ -171,8 +171,7 @@ var wordFighterGame = {
             document.querySelector("#aircraftPic").innerHTML =
             "<img src='\../Images/'>" +
             this.wordBankWords[this.target].aircraftPic;
-
-            //document.querySelector("#winTally").innerHTML = this.wins;
+            document.querySelector("#winTally").innerHTML = this.wins;
             var audio = new Audio(this.wordBankWords[this.target].soundByte);
             audio.play();
             wordFighterGame.newGame();
